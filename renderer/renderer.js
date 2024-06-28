@@ -1,10 +1,10 @@
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(' ');
+const letters = '01234ABCDEFGHIJKLM56789NOPQRSTUVWXYZ␣'.split('');
 let currentKeys = letters;
-let selectedKeys = '';
+let selectedKeys = '';  
 
 let gazeStartTime = null;
 let gazeDirection = null;
-const GAZE_DURATION_THRESHOLD = 2000; // 1 second   
+const GAZE_DURATION_THRESHOLD = 2000; // 1 second
 
 function updateKeyboard() {
     const leftZone = document.querySelector('.left-zone');
@@ -16,7 +16,7 @@ function updateKeyboard() {
 }
 
 function updateSelectedKeys() {
-    document.getElementById('selected-keys').textContent = selectedKeys;
+    document.getElementById('text-input').value = selectedKeys;
 }
 
 function resetKeyboard() {

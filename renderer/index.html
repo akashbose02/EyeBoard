@@ -21,7 +21,7 @@
         }
         #keyboard {
             width: 100%;
-            height: 70vh;
+            height: 50vh;
             display: flex;
             box-sizing: border-box;
         }
@@ -50,15 +50,43 @@
             font-size: 1.5em;
             margin-top: 20px;
         }
+        #text-input {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1.2em;
+            display: block;
+        }
+
+        .left-dot {
+            position: absolute;
+            left: 10px;
+            background: red;
+            border-radius: 100%;
+            z-index: 999;
+        }
+        .right-dot {
+            position: absolute;
+            right: 10px;
+            background: red;
+            z-index: 999;
+            border-radius: 100%;
+
+        }
+
     </style>
 </head>
 <body>
     <h1>Eye Tracking Keyboard</h1>
+    <input type="text" id="text-input" placeholder="Your text will appear here">
     <div id="keyboard">
-        <div class="zone left-zone"></div>
-        <div class="zone right-zone"></div>
+        <p class="left-dot">•</p>
+        <p class="right-dot">•</p>
+        <div class="zone left-zone">
+        </div>
+        <div class="zone right-zone">
+        </div>
     </div>
-    <div id="selected-keys"></div>
 
     <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
     <script src="renderer.js"></script>
