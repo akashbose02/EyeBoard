@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Eye Tracking Keyboard</title>
+        <style>
+            #keyboard {
+                position: absolute;
+                top: 300px;
+                width: 100vw;
+                height: 40vh;
+                display: grid;
+                grid-template-columns: repeat(10, 1fr);
+                gap: 5px;
+            }
+            .key {
+                padding: 300px;
+                background: lightgray;
+                text-align: center;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Eye Tracking Keyboard</h1>
+        <div id="keyboard"></div>
+
+        <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+        <script src="renderer.js"></script>
+    </body>
+</html>
