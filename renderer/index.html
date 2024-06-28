@@ -1,38 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Eye Tracking Keyboard</title>
-        <style>
-            #keyboard {
-                position: absolute;
-                top: 300px;
-                width: 100vw;
-                height: 40vh;
-                display: grid;
-                grid-template-columns: repeat(10, 1fr);
-                gap: 5px;
-            }
-            .key {
-                padding: 20px;
-                background: lightgray;
-                text-align: center;
-                cursor: pointer;
-            }
-            .key.double {
-                grid-column: span 2;
-            }
-            .key.space {
-                grid-column: span 5;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Eye Tracking Keyboard</h1>
-        <div id="keyboard"></div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Width Eye Tracking Keyboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+            color: #333;
+        }
+        #keyboard {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .key {
+            padding: 15px 5px;
+            background: #fff;
+            border: 1px solid #ddd;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1em;
+            color: #000;
+            transition: all 0.2s ease;
+        }
+        .key:hover, .key:focus {
+            background: #f5f5f5;
+        }
+        .key:active {
+            background: #e0e0e0;
+        }
+        .key.double {
+            grid-column: span 2;
+        }
+        .key.space {
+            grid-column: span 5;
+        }
+        #webgazerVideoContainer {
+            display: none !important;
+        }
+        #webgazerGazeDot {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eye Tracking Keyboard</h1>
+    <div id="keyboard"></div>
 
-        <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
-        <script src="renderer.js"></script>
-    </body>
+    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+    <script src="renderer.js"></script>
+</body>
 </html>
