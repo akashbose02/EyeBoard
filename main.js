@@ -1,10 +1,15 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, screen } = require('electron');
 const path = require('path');
 
 function createWindow () {
+  const primaryDisplay = screen.getPrimaryDisplay();
+  const { width: screenWidth } = primaryDisplay.size;
+  const fixedHeight = 600; // Set your fixed height here
+
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: screenWidth,
+    height: fixedHeight,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
