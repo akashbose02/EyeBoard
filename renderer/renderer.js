@@ -1,6 +1,6 @@
 const letters = '01234ABCDEFGHIJKLM56789NOPQRSTUVWXYZ␣'.split('');
 let currentKeys = letters;
-let selectedKeys = '';  
+let selectedKeys = '';
 
 let gazeStartTime = null;
 let gazeDirection = null;
@@ -16,7 +16,14 @@ function updateKeyboard() {
 }
 
 function updateSelectedKeys() {
-    document.getElementById('text-input').value = selectedKeys;
+    const inputElement = document.getElementById('text-input');
+    inputElement.value = selectedKeys;
+
+    // Speak the last letter typed
+    const lastChar = selectedKeys[selectedKeys.length - 1];
+    if (lastChar !== undefined) {
+        speakText(lastChar === '␣' ? 'space' : lastChar);
+    }
 }
 
 function resetKeyboard() {
@@ -38,6 +45,11 @@ function highlightZone(direction) {
         leftZone.style.backgroundColor = 'lightblue';
         rightZone.style.backgroundColor = 'lightgreen';
     }
+}
+
+function speakText(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
 }
 
 webgazer.setGazeListener((data, elapsedTime) => {
@@ -82,4 +94,4 @@ webgazer.setGazeListener((data, elapsedTime) => {
 
 updateKeyboard();
 updateSelectedKeys();
-highlightZone(null); 
+highlightZone(null);
