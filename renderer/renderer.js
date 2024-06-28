@@ -4,7 +4,7 @@ let selectedKeys = '';
 
 let gazeStartTime = null;
 let gazeDirection = null;
-const GAZE_DURATION_THRESHOLD = 2000; // 1 second
+const GAZE_DURATION_THRESHOLD = 2000;
 
 function updateKeyboard() {
     const leftZone = document.querySelector('.left-zone');
@@ -50,7 +50,6 @@ webgazer.setGazeListener((data, elapsedTime) => {
 
     let currentGazeDirection = x < midX ? 'left' : 'right';
 
-    // Highlight the zone being looked at
     highlightZone(currentGazeDirection);
 
     if (currentGazeDirection !== gazeDirection) {
@@ -70,7 +69,7 @@ webgazer.setGazeListener((data, elapsedTime) => {
                 selectedKeys += currentKeys[0];
                 updateSelectedKeys();
                 resetKeyboard();
-                highlightZone(null); // Reset highlight
+                highlightZone(null); 
             } else {
                 updateKeyboard();
             }
@@ -81,7 +80,6 @@ webgazer.setGazeListener((data, elapsedTime) => {
     }
 }).begin();
 
-// Initial render
 updateKeyboard();
 updateSelectedKeys();
-highlightZone(null); // Initialize with default colors
+highlightZone(null); 
