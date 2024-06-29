@@ -4,17 +4,12 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-<<<<<<< HEAD
     "dist": "electron-builder"
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
->>>>>>> 4ede1336c7ed85e5b0cece05bab295a42bc91995
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-<<<<<<< HEAD
     "electron": "^31.1.0",
     "electron-builder": "^24.13.3"
   },
@@ -49,11 +44,5 @@
       "createStartMenuShortcut": true,
       "shortcutName": "Eyeboard"
     }
-=======
-    "electron": "^31.1.0"
-  },
-  "dependencies": {
-    "webgazer": "^3.3.0"
->>>>>>> 4ede1336c7ed85e5b0cece05bab295a42bc91995
   }
 }
