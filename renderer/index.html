@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eye Tracking Keyboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+        #keyboard {
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            box-sizing: border-box;
+        }
+        .zone {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            transition: background-color 0.3s;
+        }
+        .left-zone {
+            background: lightblue;
+        }
+        .right-zone {
+            background: lightgreen;
+        }
+        #webgazerVideoContainer {
+            display: none !important;
+        }
+        #webgazerGazeDot {
+            display: none !important;
+        }
+        #selected-keys {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        #text-input {
+            width: 80%;
+            margin: 20px auto;
+            padding: 10px;
+            font-size: 1.2em;
+            display: block;
+        }
+        .left-dot {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            background: red;
+            border-radius: 100%;
+            z-index: 999;
+        }
+        .right-dot {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            background: red;
+            z-index: 999;
+            border-radius: 100%;
+        }
+        #buffering {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #333;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="buffering">Now Loading...</div>
+    <h1>Eye Tracking Keyboard</h1>
+    <input type="text" id="text-input" placeholder="Your text will appear here">
+    <div id="keyboard">
+        <p class="left-dot">•</p>
+        <p class="right-dot">•</p>
+        <div class="zone left-zone"></div>
+        <div class="zone right-zone"></div>
+    </div>
+
+    <script src="../webgazer.js"></script>
+    <script src="renderer.js"></script>
+</body>
+</html>
+
