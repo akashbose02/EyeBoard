@@ -5,7 +5,7 @@ let selectedKeys = "";
 
 let gazeStartTime = null;
 let gazeDirection = null;
-const GAZE_DURATION_THRESHOLD = 1000;
+const GAZE_DURATION_THRESHOLD = 1500;
 
 function speak(sentence) {
   const utterance = new SpeechSynthesisUtterance(sentence);
@@ -93,7 +93,10 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           if (currentKeys.length === 1) {
-            selectedKeys += currentKeys[0];
+            if(currentKeys[0] === '␣')
+                selectedKeys += ' '
+            else
+                selectedKeys += currentKeys[0];
             updateSelectedKeys();
             resetKeyboard();
             highlightZone(null);
