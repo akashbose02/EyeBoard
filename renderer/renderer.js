@@ -25,16 +25,19 @@ function updateKeyboard() {
 
 function updateSelectedKeys() {
   const inputElement = document.getElementById("text-input");
-  //   sen_length = inputElement.value.length;
-
   inputElement.value = selectedKeys;
-  speak(inputElement.value);
 
   // Speak the last letter typed
-  //   const lastChar = selectedKeys[selectedKeys.length - 1];
-  //   if (lastChar !== undefined) {
-  //     speakText(lastChar === "␣" ? "space" : lastChar);
-  //   }
+  const lastChar = selectedKeys[selectedKeys.length - 1];
+  if (lastChar !== undefined) {
+    speak(lastChar === "␣" ? "space" : lastChar);
+  }
+
+  // Speak the word if space is detected
+  const words = selectedKeys.trim().split(" ");
+  if (selectedKeys.endsWith(" ") && words.length > 0) {
+    speak(words[words.length - 2]);
+  }
 }
 
 function resetKeyboard() {
@@ -58,53 +61,57 @@ function highlightZone(direction) {
   }
 }
 
-// function speakText(text) {
-//   const utterance = new SpeechSynthesisUtterance(text);
-// //   speechSynthesis.speak(utterance);
-// }
+document.addEventListener("DOMContentLoaded", () => {
+  const bufferingElement = document.getElementById("buffering");
 
-webgazer
-  .setGazeListener((data, elapsedTime) => {
-    if (data == null) return;
+  webgazer
+    .setGazeListener((data, elapsedTime) => {
+      if (data == null) return;
 
-    const x = data.x;
-    const keyboard = document.getElementById("keyboard");
-    const rect = keyboard.getBoundingClientRect();
-    const midX = rect.left + rect.width / 2;
+      const x = data.x;
+      const keyboard = document.getElementById("keyboard");
+      const rect = keyboard.getBoundingClientRect();
+      const midX = rect.left + rect.width / 2;
 
-    let currentGazeDirection = x < midX ? "left" : "right";
+      let currentGazeDirection = x < midX ? "left" : "right";
 
-    highlightZone(currentGazeDirection);
+      highlightZone(currentGazeDirection);
 
-    if (currentGazeDirection !== gazeDirection) {
-      gazeStartTime = new Date().getTime();
-      gazeDirection = currentGazeDirection;
-    } else {
-      const currentTime = new Date().getTime();
-      if (currentTime - gazeStartTime >= GAZE_DURATION_THRESHOLD) {
-        const midpoint = Math.floor(currentKeys.length / 2);
-        if (gazeDirection === "left") {
-          currentKeys = currentKeys.slice(0, midpoint);
-        } else {
-          currentKeys = currentKeys.slice(midpoint);
-        }
-
-        if (currentKeys.length === 1) {
-          selectedKeys += currentKeys[0];
-          updateSelectedKeys();
-          resetKeyboard();
-          highlightZone(null);
-        } else {
-          updateKeyboard();
-        }
-
-        gazeStartTime = null;
-        gazeDirection = null;
+      // Hide buffering message when gaze starts highlighting a zone
+      if (bufferingElement.style.display !== "none") {
+        bufferingElement.style.display = "none";
       }
-    }
-  })
-  .begin();
 
-updateKeyboard();
-updateSelectedKeys();
-highlightZone(null);
+      if (currentGazeDirection !== gazeDirection) {
+        gazeStartTime = new Date().getTime();
+        gazeDirection = currentGazeDirection;
+      } else {
+        const currentTime = new Date().getTime();
+        if (currentTime - gazeStartTime >= GAZE_DURATION_THRESHOLD) {
+          const midpoint = Math.floor(currentKeys.length / 2);
+          if (gazeDirection === "left") {
+            currentKeys = currentKeys.slice(0, midpoint);
+          } else {
+            currentKeys = currentKeys.slice(midpoint);
+          }
+
+          if (currentKeys.length === 1) {
+            selectedKeys += currentKeys[0];
+            updateSelectedKeys();
+            resetKeyboard();
+            highlightZone(null);
+          } else {
+            updateKeyboard();
+          }
+
+          gazeStartTime = null;
+          gazeDirection = null;
+        }
+      }
+    })
+    .begin();
+
+  updateKeyboard();
+  updateSelectedKeys();
+  highlightZone(null);
+});

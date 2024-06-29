@@ -57,7 +57,6 @@
             font-size: 1.2em;
             display: block;
         }
-
         .left-dot {
             position: absolute;
             left: 10px;
@@ -73,24 +72,36 @@
             background: red;
             z-index: 999;
             border-radius: 100%;
-
         }
-
+        #buffering {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #333;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
+    <div id="buffering">Now Loading...</div>
     <h1>Eye Tracking Keyboard</h1>
     <input type="text" id="text-input" placeholder="Your text will appear here">
     <div id="keyboard">
         <p class="left-dot">•</p>
         <p class="right-dot">•</p>
-        <div class="zone left-zone">
-        </div>
-        <div class="zone right-zone">
-        </div>
+        <div class="zone left-zone"></div>
+        <div class="zone right-zone"></div>
     </div>
 
     <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
     <script src="renderer.js"></script>
 </body>
 </html>
+
