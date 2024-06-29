@@ -5,7 +5,7 @@ let selectedKeys = "";
 
 let gazeStartTime = null;
 let gazeDirection = null;
-const GAZE_DURATION_THRESHOLD = 2000;
+const GAZE_DURATION_THRESHOLD = 1000;
 
 function speak(sentence) {
   const utterance = new SpeechSynthesisUtterance(sentence);
@@ -27,13 +27,11 @@ function updateSelectedKeys() {
   const inputElement = document.getElementById("text-input");
   inputElement.value = selectedKeys;
 
-  // Speak the last letter typed
   const lastChar = selectedKeys[selectedKeys.length - 1];
   if (lastChar !== undefined) {
     speak(lastChar === "␣" ? "space" : lastChar);
   }
 
-  // Speak the word if space is detected
   const words = selectedKeys.trim().split(" ");
   if (selectedKeys.endsWith(" ") && words.length > 0) {
     speak(words[words.length - 2]);
@@ -77,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       highlightZone(currentGazeDirection);
 
-      // Hide buffering message when gaze starts highlighting a zone
       if (bufferingElement.style.display !== "none") {
         bufferingElement.style.display = "none";
       }
