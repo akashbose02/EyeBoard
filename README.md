@@ -1,7 +1,10 @@
 # 👁️ EyeBoard (Eye Tracking Keyboard)
 
-
 An innovative Electron-based application that allows users to type using only their eye movements. Perfect for individuals with limited mobility or those exploring new forms of human-computer interaction.
+
+## Demo Video
+[![image](https://github.com/slayeh17/EyeBoard/assets/104914725/58681f97-d6c5-4b7a-96ac-b97a0dfcba85)](https://www.youtube.com/embed/v5vzhSbksLQ?si=ELpcUZyhbci19-lk)
+
 
 ## ✨ Features
 
