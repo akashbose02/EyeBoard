@@ -28,12 +28,12 @@ An innovative Electron-based application that allows users to type using only th
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/eye-tracking-keyboard.git
+   git clone https://github.com/slayeh17/EyeBoard.git
    ```
 
 2. Navigate to the project directory:
    ```
-   cd eye-tracking-keyboard
+   cd EyeBoard
    ```
 
 3. Install the dependencies:
