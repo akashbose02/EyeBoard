@@ -1,6 +1,5 @@
 # 👁️ Eye Tracking Keyboard
 
-![Eye Tracking Keyboard Demo Video]()
 
 An innovative Electron-based application that allows users to type using only their eye movements. Perfect for individuals with limited mobility or those exploring new forms of human-computer interaction.
 
@@ -60,13 +59,3 @@ An innovative Electron-based application that allows users to type using only th
 
 We welcome contributions to the Eye Tracking Keyboard project! Please feel free to submit issues, fork the repository and send pull requests!
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## 🙏 Acknowledgments
-
-- [WebGazer.js](https://webgazer.cs.brown.edu/) for providing the core eye-tracking functionality
-- The Electron community for their excellent documentation and support
-
----
