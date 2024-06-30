@@ -1,4 +1,4 @@
-# 👁️ Eye Tracking Keyboard
+# 👁️ EyeBoard (Eye Tracking Keyboard)
 
 
 An innovative Electron-based application that allows users to type using only their eye movements. Perfect for individuals with limited mobility or those exploring new forms of human-computer interaction.
